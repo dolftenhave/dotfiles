@@ -64,7 +64,7 @@ bindsym $mod+b exec i3-msg "workspace $ws2"; exec firefox
 assign [class="firefox"] $ws2
 
 # start dmenu (a program launcher)
-bindsym $mod+d dmenu_run
+bindsym $mod+d exec dmenu_run -c -l 15 -p "Run:"
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
