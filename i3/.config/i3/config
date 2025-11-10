@@ -224,7 +224,7 @@ set $bg3		#665c54
 
 # Window Theming
 # class					border	backgr	text	indicator	child_border
-client.focused			$bg2	$bg2	$fg		$bg2		$bg2
+client.focused			$bg3	$bg3	$fg		$bg3		$bg3
 client.focused_inactive	$bg1	$bg1	$fg		$bg1		$bg1
 client.unfocused		$bg0	$bg0	$fg		$bg0		$bg0
 client.urgent			$orange_alt $orange_alt $bg $orange_alt $orange_alt
