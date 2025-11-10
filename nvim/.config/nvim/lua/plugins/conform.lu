@@ -1,0 +1,32 @@
+return {
+	"stevearc/conform.nvim",
+	opts = {},
+
+	config = function()
+		local conform = require("conform")
+		-- Formatter by filetype
+		conform.setup({
+			formatters_by_ft = {
+			--	lua = { "stylua" },
+				java = { "google-java-format" },
+				c = "clang-format",
+				cpp = "clang-format",
+			},
+
+			vim.api.nvim_create_autocmd({ "BufWritePre", "BufWritePost" }, {
+				pattern = "*",
+				callback = function()
+					conform.format({
+						async = true,
+					})
+				end,
+			}),
+
+			vim.keymap.set("n", "<leader>ll", function()
+				conform.format({
+					async = true,
+				})
+			end, { desc = "Trigger the formatter for the current file type" }),
+		})
+	end,
+}
