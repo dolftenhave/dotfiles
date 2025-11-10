@@ -197,4 +197,38 @@ bindsym $mod+r mode "resize"
 # Bar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# Colors
+## Gruvbox
+set $bg			#282828
+set $fg			#ebdbb2
+set $red		#cc241d
+set $red_alt	#fb4934
+set $green		#98971a
+set $green_alt	#b8bb26
+set $yellow		#d79921
+set $yellow_alt	#fabd2f
+set $blue		#458588
+set $blue_alt	#83a598
+set $purple		#b16286
+set $purple_alt	#d3869b
+set $aqua		#689d6a
+set $aqua_alt	#8ec07c
+set $gray		#a89984
+set $gray_alt	#928374
+set $orange		#d65d0e
+set $orange_alt	#fe8019
+set $bg0_h		#1d2021
+set $bg1		#3c3836
+set $bg2		#504945
+set $bg3		#665c54
+
 # Window Theming
+# class					border	backgr	text	indicator	child_border
+client.focused			$bg2	$bg2	$fg		$bg2		$bg2
+client.focused_inactive	$bg1	$bg1	$fg		$bg1		$bg1
+client.unfocused		$bg0	$bg0	$fg		$bg0		$bg0
+client.urgent			$orange_alt $orange_alt $bg $orange_alt $orange_alt
+client.placeholder		$bg		$bg		$fg		$bg			$bg
+
+client.background		$bg
+
