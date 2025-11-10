@@ -74,7 +74,7 @@ return {
 					key = "q",
 					desc = "Quit",
 					padding = 1,
-					acction = ":qa",
+					action = ":qa",
 				},
 			},
 		},
