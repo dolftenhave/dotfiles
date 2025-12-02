@@ -4,27 +4,35 @@ return {
 		dependencies = { "OXY2DEV/markview.nvim" },
 		build = ":TSUpdate",
 		lazy = false,
-		branch = "main",
+		branch = "master",
+		opts = {
+
+		},
 
 		config = function()
-			local ts = require("nvim-treesitter.config")
-
-			ts.setup({
+			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
 					"c",
 					"lua",
 					"cpp",
 					"vim",
+					"vimdoc",
 					"rust",
 					"java",
 					"markdown",
 					"html",
 					"css",
+					"markdown_inline",
+					"r",
+					"rnoweb",
+					"yaml",
+					"latex"
 				},
 
 				sync_install = true,
 
 				auto_install = true,
+
 				highlight = { enabled = true },
 				indents = { enabled = true },
 			})
