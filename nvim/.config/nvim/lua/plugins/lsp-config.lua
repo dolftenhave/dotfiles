@@ -16,6 +16,7 @@ return {
 					"markdown_oxide",
 					"jdtls",
 					"air",
+					"gopls",
 				},
 			})
 		end,
@@ -24,9 +25,10 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			vim.lsp.enable("air")
+			vim.lsp.enable("gopls")
 			vim.lsp.enable("harper_ls", {
 				filetypes = { "markdown" },
-				settings = { ["harper-ls"] = { dialect = "Australian" } },
+				settings = { ["harper_ls"] = { dialect = "Australian" } },
 				on_attach = function(client, bufnr)
 					if vim.bo[bufnr].filetype ~= "markdown" then
 						client.stop()
