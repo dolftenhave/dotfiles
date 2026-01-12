@@ -10,6 +10,13 @@ All plugins are located in [lua/plugins/](lua/plugins/). With the exception of l
 - `Node` & `yarn`
 - `fzf`
 - `luarocks`
+- <details> <summary>tree-sitter-cli</summary>
+        [Github source](https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file)
+        ## Dependendies
+            - clang (for rust to compile)
+            - rustc & cargo
+  </details>
+
 - A nerd font
 
 ## Supported languages
