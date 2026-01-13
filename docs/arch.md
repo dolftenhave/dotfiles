@@ -67,3 +67,9 @@ pacstrap -K /mnt gdb minicom
 ```bash
 sudo pacman -S minicom gdb OpenOCD
 ```
+
+#### Display manager
+
+- sway
+- kitty
+- firefox
