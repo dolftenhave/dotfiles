@@ -5,7 +5,7 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
-				theme = auto,
+				theme = "earth",
 				icons_enabled = true,
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
