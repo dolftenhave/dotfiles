@@ -20,7 +20,7 @@ vim.g.mapleader = " "
 
 vim.o.termguicolors = true
 vim.o.background = "dark"
--- vim.cmd([[colorscheme gruvbox]])
+vim.cmd.colorscheme("earth")
 
 vim.opt.clipboard = "unnamedplus" --makes nvim use the system clipboard
 
