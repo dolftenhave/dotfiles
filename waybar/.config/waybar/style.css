@@ -1,0 +1,398 @@
+@define-color selection_foreground #e8ddcf;
+@define-color selection_background #4b3a30;
+
+@define-color color0 #1b130e;
+@define-color black @color0;
+
+@define-color color8 #96816e;
+@define-color bright_black @color8;
+
+@define-color color1 #893b2a;
+@define-color red @color1;
+@define-color color9 #c9664f;
+@define-color bright_red @color9;
+
+@define-color color2 #5c6a2f;
+@define-color green @color2;
+@define-color color10 #a4b95f;
+@define-color bright_green @color10;
+
+@define-color color3 #996a1a;
+@define-color yellow @color3;
+@define-color color11 #dea23b;
+@define-color bright_yellow @color11;
+
+@define-color color4 #4a5e68;
+@define-color blue @color4;
+@define-color color12 #7992a0;
+@define-color bright_blue @color12;
+
+@define-color color5 #7b473b;
+@define-color magenta @color5;
+@define-color color13 #b37265;
+@define-color bright_magenta @color13;
+
+@define-color color6 #3d6b62;
+@define-color cyan @color6;
+@define-color color14 #6dab9f;
+@define-color bright_cyan @color14;
+
+@define-color color7 #6b5747;
+@define-color white @color7;
+@define-color color15 #e8ddcf;
+@define-color bright_white @color15;
+
+@define-color bg_h #1b130e;
+@define-color bg0 #211812;
+@define-color bg1 #291f19;
+@define-color bg2 #3b2e26;
+@define-color bg3 #4b3a30;
+@define-color bg4 #6b5747;
+@define-color background @bg0;
+@define-color fg0 #96816e;
+@define-color fg1 #b4a18d;
+@define-color fg2 #c1b19f;
+@define-color fg3 #cfc0af;
+@define-color fg4 #dacdbe;
+@define-color fg5 #e8ddcf;
+@define-color foreground @fg5;
+@define-color warning @color0;
+
+/*
+ * My color aliases.
+ */
+
+@define-color bar_bg @bg3;
+@define-color bar_fg @fg5;
+@define-color module_bg @bg3;
+@define-color module-fg @fg5;
+@define-color module-bg-hover @fg1;
+@define-color module-fg-hover @bg_h;
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: @bar_bg;
+    border-bottom: @b0_h;
+    color: @bar_fg;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: @foreground;
+}
+*/
+
+window#waybar.termite {
+    background-color: @fg3;
+}
+
+window#waybar.chromium {
+    background-color: @color0;
+    border: none;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px @foreground;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: @yellow;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: @foreground;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+    background-color: @bg3;
+    box-shadow: inset 0 -3px @foreground;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+}
+
+#mode {
+    background-color: @blue;
+    box-shadow: inset 0 -3px @foreground;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    padding: 0 10px;
+    color: @foreground;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    background-color: @module_bg;
+}
+
+#battery {
+    background-color: @module_bg;
+    color: @module-fg;
+}
+
+#battery.charging, #battery.plugged {
+    color: @bright_green;
+    background-color: @module_bg;
+}
+
+@keyframes blink {
+    to {
+        background-color: @foreground;
+        color: @color0;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: @module_bg;
+    color: @bright_red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    background-color: @red;
+    color: @foreground;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: @blue;
+    color: @foreground;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: @red;
+    color: @color0;
+}
+
+label:focus {
+    background-color: @module_bg;
+}
+
+#cpu {
+    background-color: @bright_green;
+    color: @color0;
+}
+
+#memory {
+    background-color: @magenta;
+}
+
+#disk {
+    background-color: @bg5;
+}
+
+#backlight {
+    background-color: @module_bg;
+}
+
+#network {
+    background-color: @module_bg;
+}
+
+#network.disconnected {
+    color: @bright_red;
+}
+
+#pulseaudio {
+    background-color: @module_bg;
+    color: @module-fg;
+}
+
+#pulseaudio.muted {
+    background-color: @bright_blue;
+    color: @background;
+}
+
+#wireplumber {
+    background-color: @foreground;
+    color: @color0;
+}
+
+#wireplumber.muted {
+    background-color: @red;
+}
+
+#custom-media {
+    background-color: @bright_cyan;
+    color: @cyan;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#temperature {
+    background-color: @yellow;
+}
+
+#temperature.critical {
+    background-color: @red;
+}
+
+#tray {
+    background-color: @blue;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+}
+
+#idle_inhibitor {
+    background-color: @module_bg;
+}
+
+#idle_inhibitor.activated {
+    background-color: @foreground;
+    color: @module_bg;
+}
+
+#mpd {
+    background-color: @bright_cyan;
+    color: @cyan;
+}
+
+#mpd.disconnected {
+    background-color: @bright_red;
+}
+
+#mpd.stopped {
+    background-color: @bright_blue;
+}
+
+#mpd.paused {
+    background-color: @bright_cyan;
+}
+
+#language {
+    background: @cyan;
+    color: @bright_magenta;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    background: @bright_green;
+    color: @color0;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: @bright_white;
+}
+
+#privacy-item.screenshare {
+    background-color: @red;
+}
+
+#privacy-item.audio-in {
+    background-color: @green;
+}
+
+#privacy-item.audio-out {
+    background-color: @blue;
+}
