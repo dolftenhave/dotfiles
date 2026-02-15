@@ -284,6 +284,8 @@ set $fg3 #cfc0af
 set $fg4 #dacdbe
 set $fg5 #e8ddcf
 
+default_border pixel 2
+
 # Window Theming
 # class					border	backgr	text	indicator	child_border
 client.focused			$bg4	$bg4	$fg5		$bg4		$bg4
