@@ -180,6 +180,12 @@ focus output DP-2
 
 	# Open browser
     bindsym $mod+b exec $browser
+
+
+	#####
+
+	# Power Menu
+	bindsym $mod+x exec "~/.config/fuzzel/power_menu.sh"
 #
 # Scratchpad:
 #
