@@ -13,7 +13,7 @@ set $term kitty
 
 # Application launcher
 # set $menu wmenu-run
-set $menu wmenu-run -l 10
+set $menu fuzzel --placeholder "Launch..."
 
 set $browser firefox
 
@@ -21,6 +21,22 @@ set $browser firefox
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+# Desktop PC
+output DP-2 {
+	mode 2650x1440@164.891Hz
+	scale 1.3333
+	position 1920 0
+}
+
+output HDMI-A-1 {
+	mode 1920x1080@60.000Hz
+	position 0 0
+}
+
+# Set the default focus on this screen
+focus output DP-2
+
 #
 # Example configuration:
 #
@@ -87,23 +103,23 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Moving around:
 #
-    # Move your focus around
+    # Move the focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
 
-    # always moves the focuse with with shift for my keyboard layout
     bindsym $mod+Shift+$left focus left
     bindsym $mod+Shift+$down focus down
     bindsym $mod+Shift+$up focus up
     bindsym $mod+Shift+$right focus right
-    # Ditto, with arrow keys
+
+	# Move the windows around with arrow keys
+    bindsym $mod+Left move left
+    bindsym $mod+Down move down
+    bindsym $mod+Up move up
+    bindsym $mod+Right move right
+
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
