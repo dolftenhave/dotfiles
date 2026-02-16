@@ -1,0 +1,39 @@
+set $black #1b130e
+
+set $bright_black #96816e
+
+set $red #893b2a
+set $bright_red #c9664f
+
+set $green #5c6a2f
+set $bright_green #a4b95f
+
+set $yellow #996a1a
+set $bright_yellow #dea23b
+
+set $blue #4a5e68
+set $bright_blue #7992a0
+
+set $magenta #7b473b
+set $bright_magenta #b37265
+
+set $cyan #3d6b62
+set $bright_cyan #6dab9f
+
+set $white #6b5747
+set $bright_white #e8ddcf
+
+
+set $bg_h #1b130e
+set $bg0 #211812
+set $bg1 #291f19
+set $bg2 #3b2e26
+set $bg3 #4b3a30
+set $bg4 #6b5747
+
+set $fg0 #96816e
+set $fg1 #b4a18d
+set $fg2 #c1b19f
+set $fg3 #cfc0af
+set $fg4 #dacdbe
+set $fg5 #e8ddcf

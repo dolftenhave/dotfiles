@@ -244,54 +244,57 @@ bar swaybar_command waybar
 
 include /etc/sway/config.d/*
 
-set $black #1b130e
+set $black			#282828
+set $bright_black	#928374
 
-set $bright_black #96816e
+set $red			#cc241d
+set $bright_red		#fb4934
 
-set $red #893b2a
-set $bright_red #c9664f
+set $green			#98971a
+set $bright_green	#b8bb26
 
-set $green #5c6a2f
-set $bright_green #a4b95f
+set $yellow			#d79921
+set $bright_yellow	#fabd2f
 
-set $yellow #996a1a
-set $bright_yellow #dea23b
+set $blue			#458588
+set $bright_blue	#83a598
 
-set $blue #4a5e68
-set $bright_blue #7992a0
+set $magenta		#b16286
+set $bright_magenta #d3869b
 
-set $magenta #7b473b
-set $bright_magenta #b37265
+set $cyan			#689d6a
+set $bright_cyan	#8ec07c
 
-set $cyan #3d6b62
-set $bright_cyan #6dab9f
+set $white			#a89984
+set $bright_white	#ebdbb2
 
-set $white #6b5747
-set $bright_white #e8ddcf
+set $orange			#d65d0e
+set $bright_orange	#fe8019
 
 
-set $bg_h #1b130e
-set $bg0 #211812
-set $bg1 #291f19
-set $bg2 #3b2e26
-set $bg3 #4b3a30
-set $bg4 #6b5747
+set $bg				#282828
+set $bg0_h			#1d2021
+set $bg0			#282828
+set $bg1			#3c3836
+set $bg2			#504945
+set $bg3			#665c54
+set $bg4			#7c6f64
 
-set $fg0 #96816e
-set $fg1 #b4a18d
-set $fg2 #c1b19f
-set $fg3 #cfc0af
-set $fg4 #dacdbe
-set $fg5 #e8ddcf
+set $fg				#ebdbb2
+set $fg0			#32302f
+set $fg1			#a89984
+set $fg2			#bdae93
+set $fg3			#d5c4a1
+set $fg4			#ebdbb2
+set $fg5			#fbf1c7
 
 default_border pixel 2
 
 # Window Theming
 # class					border	backgr	text	indicator	child_border
-client.focused			$bg4	$bg4	$fg5		$bg4		$bg4
-client.focused_inactive	$bg3	$bg3	$fg2		$bg3		$bg3
-client.unfocused		$bg2	$bg2	$fg4		$bg2		$bg2
-client.urgent			$bright_red $bright_red $bg_h $bright_red $bright_red
-client.placeholder		$bg2	$bg2		$fg3		$bg2			$bg2
-
+client.focused			$bg3	$bg3	$fg		$bg3		$bg3
+client.focused_inactive	$bg1	$bg1	$fg		$bg1		$bg1
+client.unfocused		$bg0	$bg0	$fg		$bg0		$bg0
+client.urgent			$bright_orange $bright_orange $bg $bright_orange $bright_orange
+client.placeholder		$bg0	$bg0	$fg		$bg0		$bg0
 client.background		$bg_h
