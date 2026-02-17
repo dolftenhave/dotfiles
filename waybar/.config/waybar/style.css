@@ -1,83 +1,56 @@
-@define-color selection_foreground #e8ddcf;
-@define-color selection_background #4b3a30;
+@define-color red #cc241d;
+@define-color bright_red #fb4934;
+@define-color green #98971a;
+@define-color bright_green #b8bb26;
+@define-color yellow #d79921;
+@define-color bright_yellow #fabd2f;
+@define-color blue #458588;
+@define-color bright_blue #83a598;
+@define-color purple #b16286;
+@define-color bright_purple #d3869b;
+@define-color aqua #689d6a;
+@define-color bright_aqua #8ec07c;
+@define-color gray #a89984;
+@define-color bright_gray #928374;
+@define-color orange #d65d0e;
+@define-color bright_orange #fe8019;
 
-@define-color color0 #1b130e;
-@define-color black @color0;
-
-@define-color color8 #96816e;
-@define-color bright_black @color8;
-
-@define-color color1 #893b2a;
-@define-color red @color1;
-@define-color color9 #c9664f;
-@define-color bright_red @color9;
-
-@define-color color2 #5c6a2f;
-@define-color green @color2;
-@define-color color10 #a4b95f;
-@define-color bright_green @color10;
-
-@define-color color3 #996a1a;
-@define-color yellow @color3;
-@define-color color11 #dea23b;
-@define-color bright_yellow @color11;
-
-@define-color color4 #4a5e68;
-@define-color blue @color4;
-@define-color color12 #7992a0;
-@define-color bright_blue @color12;
-
-@define-color color5 #7b473b;
-@define-color magenta @color5;
-@define-color color13 #b37265;
-@define-color bright_magenta @color13;
-
-@define-color color6 #3d6b62;
-@define-color cyan @color6;
-@define-color color14 #6dab9f;
-@define-color bright_cyan @color14;
-
-@define-color color7 #6b5747;
-@define-color white @color7;
-@define-color color15 #e8ddcf;
-@define-color bright_white @color15;
-
-@define-color bg_h #1b130e;
-@define-color bg0 #211812;
-@define-color bg1 #291f19;
-@define-color bg2 #3b2e26;
-@define-color bg3 #4b3a30;
-@define-color bg4 #6b5747;
+@define-color bg_h #1d2021;
+@define-color bg0 #282828;
+@define-color bg1 #3c3836;
+@define-color bg2 #504945;
+@define-color bg3 #665c54;
+@define-color bg4 #7c6f64;
 @define-color background @bg0;
-@define-color fg0 #96816e;
-@define-color fg1 #b4a18d;
-@define-color fg2 #c1b19f;
-@define-color fg3 #cfc0af;
-@define-color fg4 #dacdbe;
-@define-color fg5 #e8ddcf;
-@define-color foreground @fg5;
-@define-color warning @color0;
+@define-color fg0 #32302f;
+@define-color fg1 #a89984;
+@define-color fg2 #bdae93;
+@define-color fg3 #d5c4a1;
+@define-color fg4 #ebdbb2;
+@define-color fg5 #fbf1c7;
+@define-color foreground @fg4;
+@define-color warning @bright_red;
 
 /*
  * My color aliases.
  */
 
-@define-color bar_bg @bg3;
-@define-color bar_fg @fg5;
-@define-color module_bg @bg3;
-@define-color module-fg @fg5;
-@define-color module-bg-hover @fg1;
-@define-color module-fg-hover @bg_h;
+@define-color bar_bg @bg1;
+@define-color bar_fg @foreground;
+@define-color module_bg @bg1;
+@define-color module-fg @foreground;
+@define-color module-bg-hover @bg3;
+@define-color module-fg-hover @foreground;
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: DejaVu, FontAwesome, sans-serif;
     font-size: 13px;
 }
 
 window#waybar {
     background-color: @bar_bg;
-    border-bottom: @b0_h;
+    border-bottom: @bg_h;
     color: @bar_fg;
     transition-property: background-color;
     transition-duration: .5s;
@@ -85,6 +58,10 @@ window#waybar {
 
 window#waybar.hidden {
     opacity: 0.2;
+}
+
+.module:hover {
+	background-color: @bg2;
 }
 
 /*
@@ -101,7 +78,7 @@ window#waybar.termite {
 }
 
 window#waybar.chromium {
-    background-color: @color0;
+    background-color: @black;
     border: none;
 }
 
@@ -121,7 +98,7 @@ button:hover {
 
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
-    background-color: @yellow;
+    background-color: @bg3;
 }
 
 #workspaces button {
@@ -201,7 +178,7 @@ button:hover {
 @keyframes blink {
     to {
         background-color: @foreground;
-        color: @color0;
+        color: @black;
     }
 }
 
@@ -232,7 +209,7 @@ button:hover {
 
 #power-profiles-daemon.power-saver {
     background-color: @red;
-    color: @color0;
+    color: @black;
 }
 
 label:focus {
@@ -241,7 +218,7 @@ label:focus {
 
 #cpu {
     background-color: @bright_green;
-    color: @color0;
+    color: @black;
 }
 
 #memory {
@@ -257,26 +234,28 @@ label:focus {
 }
 
 #network {
-    background-color: @module_bg;
 }
 
 #network.disconnected {
     color: @bright_red;
 }
 
-#pulseaudio {
-    background-color: @module_bg;
-    color: @module-fg;
+#pulseaudio.icon {
+	margin-right:-3;
+	padding-right: 4;
+}
+#pulseaudio.voltext {
+	margin-left:-3;
+	padding-left: 1;
 }
 
-#pulseaudio.muted {
-    background-color: @bright_blue;
-    color: @background;
+#pulseaudio.icon.muted {
+    color: @bright_red;
 }
 
 #wireplumber {
     background-color: @foreground;
-    color: @color0;
+    color: @black;
 }
 
 #wireplumber.muted {
@@ -284,8 +263,8 @@ label:focus {
 }
 
 #custom-media {
-    background-color: @bright_cyan;
-    color: @cyan;
+    background-color: @module_bg;
+    color: @bright_cyan;
     min-width: 100px;
 }
 
@@ -328,7 +307,7 @@ label:focus {
 }
 
 #mpd {
-    background-color: @bright_cyan;
+    background-color: @module_bg;
     color: @cyan;
 }
 
@@ -354,7 +333,7 @@ label:focus {
 
 #keyboard-state {
     background: @bright_green;
-    color: @color0;
+    color: @black;
     padding: 0 0px;
     margin: 0 5px;
     min-width: 16px;
@@ -386,13 +365,13 @@ label:focus {
 }
 
 #privacy-item.screenshare {
-    background-color: @red;
+    background-color: @module_bg;
 }
 
 #privacy-item.audio-in {
-    background-color: @green;
+    background-color: @module_bg;
 }
 
 #privacy-item.audio-out {
-    background-color: @blue;
+    background-color: @module_bg;
 }
