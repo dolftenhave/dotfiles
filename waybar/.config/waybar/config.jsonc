@@ -20,8 +20,7 @@
     "modules-right": [
         "mpd",				//music player
         "idle_inhibitor",
-        "pulseaudio#icon",
-        "pulseaudio#voltext",
+        "wireplumber",
         "network",
         //"power-profiles-daemon",
         //"backlight",
@@ -190,14 +189,13 @@
         },
         "on-click": "pavucontrol"
     },
-
-    "pulseaudio#icon": {
+    "wireplumber": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon}",
-        "format-bluetooth": "{icon}",
-        "format-bluetooth-muted": "",
-        "format-muted": "",
-        "format-source": "",
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "-%  ",
+        "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
@@ -208,16 +206,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
-    },
-    "pulseaudio#voltext": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}%",
-        "format-bluetooth": "{volume}%",
-        "format-bluetooth-muted": "-%",
-        "format-muted": "-%"
-        },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+		"max-volume": 100
     },
     "custom/media": {
         "format": "{icon} {text}",

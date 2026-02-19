@@ -101,6 +101,10 @@ button:hover {
     background-color: @bg3;
 }
 
+#pulseausio.muted {
+	color: @red;
+}
+
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
@@ -240,26 +244,11 @@ label:focus {
     color: @bright_red;
 }
 
-#pulseaudio.icon {
-	margin-right:-3;
-	padding-right: 4;
-}
-#pulseaudio.voltext {
-	margin-left:-3;
-	padding-left: 1;
-}
-
-#pulseaudio.icon.muted {
-    color: @bright_red;
-}
-
 #wireplumber {
-    background-color: @foreground;
-    color: @black;
 }
 
 #wireplumber.muted {
-    background-color: @red;
+    color: @red;
 }
 
 #custom-media {
