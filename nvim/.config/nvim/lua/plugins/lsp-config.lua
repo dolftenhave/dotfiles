@@ -73,10 +73,17 @@ return {
 						workspace = { library = { vim.fs.abspath("~/code/uni/349/microbit-v2-samples/libraries") } },
 					},
 				},
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--query-drivers=**arm-none-eabi-g*",
+					"--header-insertion=iwyu",
+				},
 			})
 
 			vim.lsp.enable("markdown_oxide")
 			vim.lsp.enable("jdtls")
+			vim.lsp.enable("qmlss")
 
 			--Custom binds
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp Hover" })

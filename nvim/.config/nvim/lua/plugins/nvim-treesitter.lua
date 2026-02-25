@@ -26,6 +26,7 @@ return {
 				"go",
 				"bash",
 				"nix",
+				"qmljs",
 			})
 		end,
 	},
