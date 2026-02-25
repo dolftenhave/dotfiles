@@ -37,6 +37,10 @@ output HDMI-A-1 {
 # Set the default focus on this screen
 focus output DP-2
 
+
+# Temp xwayland test
+for_window [shell="xwayland"] title_format "[xWayland] %title"
+
 #
 # Example configuration:
 #
