@@ -5,7 +5,8 @@ local M = {}
 
 vim.o.showmode = false
 
-local cached_branch = ""
+local branch = ""
+local tracked = ""
 local last_check = 0
 
 --- Returns the git branch and if the file is being tracked.
@@ -13,20 +14,17 @@ local last_check = 0
 function M.git_component()
 	local now = vim.loop.now()
 
-	local branch
-	local tracked
-
 	if now - last_check > 5000 then
 		branch = vim.fn.system("git branch --show-current 2>/dev/null | tr -d '\n'")
 		tracked = vim.fn.system(string.format("git ls-files --error-unmatch %s 2>/dev/null", vim.fn.expand("%:t"))) 
 		last_check = now
 	end
 
-	if cached_branch ~= "" then
+	if branch ~= "" then
 		if tracked ~= "" then
 			tracked = "tracked"
 		end
-		return icons.misc.git .. cached_branch .. " " 
+		return icons.misc.git .. branch .. " " .. tracked 
 	end
 	return ""
 end
