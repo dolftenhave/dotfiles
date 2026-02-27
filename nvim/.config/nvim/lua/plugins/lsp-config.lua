@@ -83,7 +83,13 @@ return {
 
 			vim.lsp.enable("markdown_oxide")
 			vim.lsp.enable("jdtls")
-			vim.lsp.enable("qmlss")
+			vim.lsp.enable("qmlls")
+			vim.lsp.config("qmlls", {
+				cmd = { 'qmlls' },
+				filetypes = { 'qml', 'qmljs' },
+				-- shell.qml is specifically for quickshell.
+				root_markers = { '.git', 'shell.qml' },
+			})
 
 			--Custom binds
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp Hover" })
