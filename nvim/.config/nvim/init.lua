@@ -1,14 +1,13 @@
 vim.g.project_dir = vim.env.HOME .. "/code"
 
 -- Setup
-require ("settings")
+require ("options")
 require ("keymaps")
 require ("autocmds")
 require ("statusline")
-require ("winbar")
-require ("lsp")
+-- require ("lsp")
 
 -- Enables the gruvbox theme
 vim.o.termguicolors = true
 vim.o.background = "dark"
-vim.cmd.colorscheme("gruvbox")
+-- vim.cmd.colorscheme("gruvbox")

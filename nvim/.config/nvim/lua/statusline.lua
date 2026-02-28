@@ -5,28 +5,42 @@ local M = {}
 
 vim.o.showmode = false
 
-local branch = ""
-local tracked = ""
-local last_check = 0
+local git_branch = ""
+local git_status = ""
+local is_repo = false
 
 --- Returns the git branch and if the file is being tracked.
 --- @return string
 function M.git_component()
-	local now = vim.loop.now()
+	git_branch = vim.fn.system("git branch --show-current 2>/dev/null | tr -d '\n'")
 
-	if now - last_check > 5000 then
-		branch = vim.fn.system("git branch --show-current 2>/dev/null | tr -d '\n'")
-		tracked = vim.fn.system(string.format("git ls-files --error-unmatch %s 2>/dev/null", vim.fn.expand("%:t"))) 
-		last_check = now
+	if git_branch ~= "" then
+		is_repo = true
 	end
 
-	if branch ~= "" then
-		if tracked ~= "" then
-			tracked = "tracked"
+	-- Adds the git diff to the status line
+	if is_repo then
+		local stats = {}
+		local raw_status = vim.fn.system(string.format("git diff --numstat %s", vim.fn.expand("%:t")))
+		
+		for stat in string.gmatch(raw_status, "%d") do
+			table.insert(stats, stat)
 		end
-		return icons.misc.git .. branch .. " " .. tracked 
+
+		if stats[1] ~= "0" then
+			git_status = string.format("%%#DiagnosticOk#+%s", stats[1])
+		end
+		if stats[1] ~= "0" then
+			git_status = string.format("%s %%#DiagnosticError#-%s%%#StatusLine#",git_status, stats[2])
+		end
 	end
-	return ""
+
+	return table.concat{
+		icons.misc.git,
+		git_branch,
+		" ",
+		git_status,
+	}
 end
 
 --- Returnts the an icon based on the filetype
@@ -85,9 +99,21 @@ function M.mode_component()
 
 	local mode = mode_to_str[vim.api.nvim_get_mode().mode] or "UNKNOWN"
 
-	return string.format("[%s]", mode)
+	local hl = "Other"
 
-	-- Create the components.
+	if mode:find "NORMAL" then
+		hl = "Normal"
+	elseif mode:find 'PENDING' then
+        hl = 'Pending'
+    elseif mode:find 'VISUAL' then
+        hl = 'Visual'
+    elseif mode:find 'INSERT' or mode:find 'SELECT' then
+        hl = 'Insert'
+    elseif mode:find 'COMMAND' or mode:find 'TERMINAL' or mode:find 'EX' then
+        hl = 'Command'
+    end
+
+	return string.format("[%%#StatuslineMode%s#%s]",hl, mode)
 end
 
 --- Returns the position of the cursor in the current buffer.
@@ -95,12 +121,18 @@ end
 function M.position_component()
 	local line = vim.fn.line "."
 	local line_count = vim.api.nvim_buf_line_count(0)
-	local col = vim.fn.virtcol "."
 
-	return table.concat {
-		string.format("%d", line),
-		string.format("/%d c: %d", line_count, col),
-	}
+	return	string.format("%d/%d", line, line_count)
+end
+
+--- Returns the name of the file
+--- @return string
+function M.filename_component()
+	local name = vim.fn.expand("%:t")
+	if name == "" then
+		return "[No Name]"
+	end
+	return name
 end
 
 --- Renders the statusline based on the current buffer.
@@ -110,7 +142,7 @@ function M.render()
 	---@return string
 	local function concat_components(components)
 		return vim.iter(components):skip(1):fold(components[1], function(acc, component)
-			return #component > 0 and string.format("%s    %s", acc, component) or acc
+			return #component > 0 and string.format("%s %s", acc, component) or acc
 		end)
 	end
 
@@ -118,13 +150,14 @@ function M.render()
 		concat_components {
 			M.mode_component(),
 			M.git_component(),
+			M.filename_component(),
 		},
-		--concat_components {
-		--	vim.diagnostic.status(),
-	--		M.file_type(),
-	--		M.position(),
-	--	},
-		" ",
+		"%=",
+		concat_components {
+			--vim.diagnostic.status(),
+			M.filetype_component(),
+			M.position_component(),
+		},
 	}
 end
 
