@@ -27,6 +27,7 @@ return {
 				"bash",
 				"nix",
 				"qmljs",
+				"sql",
 			})
 		end,
 	},

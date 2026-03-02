@@ -85,6 +85,9 @@ return {
 			vim.lsp.enable("jdtls")
 			vim.lsp.enable("qmlss")
 
+			vim.lsp.enable("pyright")
+			vim.lsp.enable("sqls")
+
 			--Custom binds
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp Hover" })
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Get definition." })
