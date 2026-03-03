@@ -35,7 +35,7 @@ ts.install({
 	"json",
 	"latex",
 	"lua",
-	"makefile",
+	"make",
 	"markdown",
 	"markdown_inline",
 	"nix",
