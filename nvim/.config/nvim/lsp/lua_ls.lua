@@ -16,8 +16,11 @@ return {
 				enabled = true,
 				globals = { "vim" },
 			},
-			workspaces = { 
-				library = {vim.env.VIMRUNTIME },
+			workspaces = {
+				library = {
+					vim.env.VIMRUNTIME,
+					"${3rd}/luv/library",
+				},
 				checkThirdParty = false,
 			},
 			telemetry = {
