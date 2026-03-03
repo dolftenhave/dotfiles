@@ -9,6 +9,7 @@ vim.lsp.enable({
 	"markdown_oxide",
 	"pyright",
 	"sqls",
+	"qmlls",
 })
 
 vim.diagnostic.config({
