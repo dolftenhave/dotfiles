@@ -20,6 +20,9 @@ return {
 				library = {vim.env.VIMRUNTIME },
 				checkThirdParty = false,
 			},
+			telemetry = {
+				enable = false,
+			},
 		}
 	}
 }
