@@ -5,6 +5,10 @@ vim.lsp.enable({
 	"yamlls",
 	"bashls",
 	"clangd",
+	"rust-analyzer",
+	"markdown_oxide",
+	"pyright",
+	"sqls",
 })
 
 vim.diagnostic.config({
