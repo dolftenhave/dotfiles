@@ -27,10 +27,10 @@ function M.git_component()
 			table.insert(stats, stat)
 		end
 
-		if stats[1] ~= "0" then
+		if stats[1] ~= nil then
 			git_status = string.format("%%#DiagnosticOk#+%s", stats[1])
 		end
-		if stats[1] ~= "0" then
+		if stats[1] ~= nil then
 			git_status = string.format("%s %%#DiagnosticError#-%s%%#StatusLine#",git_status, stats[2])
 		end
 	end
@@ -116,6 +116,24 @@ function M.mode_component()
 	return string.format("[%%#StatuslineMode%s#%s]",hl, mode)
 end
 
+-- Return the number of hints, warnings and errors in the current buffer.
+--- @return string
+function M.diagnostic_component()
+	if vim.diagnostic == nil then
+		return ""
+	end
+	local hlg = { "DiagnosticError", "DiagnosticWarn", "DiagnosticHint", "DiagnosticInfo" }
+	local icon = {icons.diagnostics.ERROR, icons.diagnostics.WARN, icons.diagnostics.HINT, icons.diagnostics.INFO}
+	local diagnostics = vim.diagnostic.count(0)
+	local component = ""
+
+	for severity, count in pairs(diagnostics) do
+		component = string.format(" %s %%#%s#%s%d", component, hlg[severity], icon[severity], count)
+	end
+
+	return component
+end
+
 --- Returns the position of the cursor in the current buffer.
 --- @return string
 function M.position_component()
@@ -149,12 +167,12 @@ function M.render()
 	return table.concat {
 		concat_components {
 			M.mode_component(),
-			M.git_component(),
 			M.filename_component(),
+			M.diagnostic_component()
 		},
 		"%=",
 		concat_components {
-			--vim.diagnostic.status(),
+			M.git_component(),
 			M.filetype_component(),
 			M.position_component(),
 		},
