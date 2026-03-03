@@ -9,6 +9,7 @@ vim.pack.add({
 		-- master is depricated.
 		version = "main",
 	},
+	{ src = gh("nvim-treesitter/nvim-treesitter-context") } ,
 
 	-- Telescope and dependencies
 	{src = gh("nvim-lua/plenary.nvim")},
@@ -44,6 +45,20 @@ ts.install({
 
 -- TODO I think this works? Check that :TSUpdate is being called when nvim launches.
 ts.update()
+
+require("treesitter-context").setup({
+	enable = true,
+	multiwindow = false,
+	max_lines = 0,
+	min_window_height = 0,
+	line_numbers = true,
+	multiline_threshold = 20,
+	trim_scope = "outer",
+	mode = "cursor",
+	separator = nil,
+	zindex = 20,
+	on_attach = nil,
+})
 
 
 -- ===================
