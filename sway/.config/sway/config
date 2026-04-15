@@ -1,3 +1,7 @@
+#===========================#
+# Globals					#
+#===========================#
+
 # The leader key
 set $mod Mod4
 
@@ -17,10 +21,10 @@ set $menu fuzzel --placeholder "Launch..."
 
 set $browser firefox
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#===========================#
+# Output configuration		#
+#===========================#
+output * bg /usr/share/backgrounds/wall.jpg fill
 
 # Desktop PC
 output DP-2 {
@@ -79,10 +83,12 @@ for_window [shell="xwayland"] title_format "[xWayland] %title"
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
 
-### Key bindings
-#
+#===========================#
+# Key bindings				#
+#===========================#
+#---------------------------#
 # Basics:
-#
+#---------------------------#
     # Start a terminal
     bindsym $mod+Return exec $term
 
@@ -104,9 +110,10 @@ for_window [shell="xwayland"] title_format "[xWayland] %title"
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
-# Moving around:
-#
+
+#---------------------------#
+# Moving around:			#
+#---------------------------#
     # Move the focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
@@ -128,11 +135,14 @@ for_window [shell="xwayland"] title_format "[xWayland] %title"
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
-#
-# Workspaces:
-#
+
+#---------------------------#
+# Workspaces:				#
+#---------------------------#
+set $ws1 number 1
+set $ws2 number 2
     # Switch to workspace
-    bindsym $mod+1 workspace number 1
+    bindsym $mod+1 workspace number 
     bindsym $mod+2 workspace number 2
     bindsym $mod+3 workspace number 3
     bindsym $mod+4 workspace number 4
@@ -155,9 +165,10 @@ for_window [shell="xwayland"] title_format "[xWayland] %title"
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
+
+#---------------------------#
+# Layout stuff:				#
+#---------------------------#
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
@@ -183,16 +194,18 @@ for_window [shell="xwayland"] title_format "[xWayland] %title"
     bindsym $mod+a focus parent
 
 	# Open browser
-    bindsym $mod+b exec $browser
+bindsym $mod+b exec swaymsg "workspace $ws2"; exec $browser
+assign [app_id="firefox"] $ws2
 
 
-	#####
-
-	# Power Menu
+#---------------------------#
+# Power Menu				#
+#---------------------------#
 	bindsym $mod+x exec "~/.config/fuzzel/power_menu.sh"
-#
-# Scratchpad:
-#
+
+#===========================#
+# Scratchpad:				#
+#===========================#
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
 
@@ -202,9 +215,10 @@ for_window [shell="xwayland"] title_format "[xWayland] %title"
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
+
+#===========================#
+# Resizing containers:		#
+#===========================#
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -226,9 +240,10 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-#
-# Utilities:
-#
+
+#===========================#
+# Utilities:				#
+#===========================#
     # Special keys to adjust volume via PulseAudio
     bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
@@ -240,14 +255,21 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
-#
-# Status Bar:
-#
+#===========================#
+# Status Bar:				#
+#===========================#
 # Read `man 5 sway-bar` for more information about this section.
-bar swaybar_command waybar
+bar {
+	swaybar_command waybar
+}
 
 include /etc/sway/config.d/*
 
+#============================#
+# Colors					 #
+#----------------------------#
+# Theme: Gruvbox			 #
+#============================#
 set $black			#282828
 set $bright_black	#928374
 
@@ -275,7 +297,6 @@ set $bright_white	#ebdbb2
 set $orange			#d65d0e
 set $bright_orange	#fe8019
 
-
 set $bg				#282828
 set $bg0_h			#1d2021
 set $bg0			#282828
@@ -294,7 +315,10 @@ set $fg5			#fbf1c7
 
 default_border pixel 2
 
-# Window Theming
+#============================#
+# Window Theming			 #
+#============================#
+
 # class					border	backgr	text	indicator	child_border
 client.focused			$bg3	$bg3	$fg		$bg3		$bg3
 client.focused_inactive	$bg1	$bg1	$fg		$bg1		$bg1
