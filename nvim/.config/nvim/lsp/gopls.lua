@@ -3,7 +3,7 @@
 
 --- @type vim.lsp.Config
 return {
-	cmd = {"gopls"},
+	cmd = { "gopls" },
 	root_marker = { "go.mod" },
 	filetypes = { "go", "gomod", "gowork", "gotmp1" },
 	settings = {
@@ -11,11 +11,11 @@ return {
 			hints = {
 				assignVariableTypes = true,
 				compositeLiteralFields = true,
-			compositeLiteralTypes = true,
-			constatValues = true,
-			functionTypeParameters = true,
-			parameterNames = true,
-			rangeVariableTypes = true,
+				compositeLiteralTypes = true,
+				constatValues = true,
+				functionTypeParameters = true,
+				parameterNames = true,
+				rangeVariableTypes = true,
 			},
 		},
 	},

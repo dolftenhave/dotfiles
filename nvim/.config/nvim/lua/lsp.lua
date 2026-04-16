@@ -10,6 +10,7 @@ vim.lsp.enable({
 	"pyright",
 	"sqls",
 	"qmlls",
+	"vimdoc_ls",
 })
 
 vim.diagnostic.config({
