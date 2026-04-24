@@ -11,7 +11,7 @@ require ("options")
 require ("keymaps")
 require ("autocmds")
 require ("lsp")
-require ("statusline")
+-- require ("statusline")
 
 -- Enables the gruvbox theme
 vim.o.termguicolors = true

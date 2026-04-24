@@ -1,6 +1,5 @@
 local icons = require("icons")
 
-
 local M = {}
 
 vim.o.showmode = false
@@ -22,7 +21,7 @@ function M.git_component()
 	if is_repo then
 		local stats = {}
 		local raw_status = vim.fn.system(string.format("git diff --numstat %s", vim.fn.expand("%:t")))
-		
+
 		for stat in string.gmatch(raw_status, "%d") do
 			table.insert(stats, stat)
 		end
@@ -31,11 +30,11 @@ function M.git_component()
 			git_status = string.format("%%#DiagnosticOk#+%s", stats[1])
 		end
 		if stats[1] ~= nil then
-			git_status = string.format("%s %%#DiagnosticError#-%s%%#StatusLine#",git_status, stats[2])
+			git_status = string.format("%s %%#DiagnosticError#-%s%%#StatusLine#", git_status, stats[2])
 		end
 	end
 
-	return table.concat{
+	return table.concat {
 		icons.misc.git,
 		git_branch,
 		" ",
@@ -56,7 +55,7 @@ function M.filetype_component()
 end
 
 --- The current mode
---- @return string
+---@return string
 function M.mode_component()
 	local mode_to_str = {
 		['n'] = 'NORMAL',
@@ -104,16 +103,16 @@ function M.mode_component()
 	if mode:find "NORMAL" then
 		hl = "Normal"
 	elseif mode:find 'PENDING' then
-        hl = 'Pending'
-    elseif mode:find 'VISUAL' then
-        hl = 'Visual'
-    elseif mode:find 'INSERT' or mode:find 'SELECT' then
-        hl = 'Insert'
-    elseif mode:find 'COMMAND' or mode:find 'TERMINAL' or mode:find 'EX' then
-        hl = 'Command'
-    end
+		hl = 'Pending'
+	elseif mode:find 'VISUAL' then
+		hl = 'Visual'
+	elseif mode:find 'INSERT' or mode:find 'SELECT' then
+		hl = 'Insert'
+	elseif mode:find 'COMMAND' or mode:find 'TERMINAL' or mode:find 'EX' then
+		hl = 'Command'
+	end
 
-	return string.format("[%%#StatuslineMode%s#%s]",hl, mode)
+	return string.format("[%%#StatuslineMode%s#%s]", hl, mode)
 end
 
 -- Return the number of hints, warnings and errors in the current buffer.
@@ -123,7 +122,7 @@ function M.diagnostic_component()
 		return ""
 	end
 	local hlg = { "DiagnosticError", "DiagnosticWarn", "DiagnosticHint", "DiagnosticInfo" }
-	local icon = {icons.diagnostics.ERROR, icons.diagnostics.WARN, icons.diagnostics.HINT, icons.diagnostics.INFO}
+	local icon = { icons.diagnostics.ERROR, icons.diagnostics.WARN, icons.diagnostics.HINT, icons.diagnostics.INFO }
 	local diagnostics = vim.diagnostic.count(0)
 	local component = ""
 
@@ -137,20 +136,7 @@ end
 --- Returns the position of the cursor in the current buffer.
 --- @return string
 function M.position_component()
-	local line = vim.fn.line "."
-	local line_count = vim.api.nvim_buf_line_count(0)
-
-	return	string.format("%d/%d", line, line_count)
-end
-
---- Returns the name of the file
---- @return string
-function M.filename_component()
-	local name = vim.fn.expand("%:t")
-	if name == "" then
-		return "[No Name]"
-	end
-	return name
+	return "%l/%L"
 end
 
 --- Renders the statusline based on the current buffer.
@@ -167,18 +153,40 @@ function M.render()
 	return table.concat {
 		concat_components {
 			M.mode_component(),
-			M.filename_component(),
+		},
+		"%t",
+		concat_components {
 			M.diagnostic_component()
 		},
-		"%=",
+		" %=",
 		concat_components {
 			M.git_component(),
 			M.filetype_component(),
-			M.position_component(),
 		},
+		"%l/%L",
 	}
 end
 
-vim.o.statusline = "%!v:lua.require('statusline').render()"
+function M.inactive()
+	return " %t"
+end
+
+local group = vim.api.nvim_create_augroup("Statusline", { clear = true })
+
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+	group = group,
+	desc = "Active statusline on focus",
+	callback = function()
+		vim.opt_local.statusline = "%!v:lua.require('statusline').render()"
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+	group = group,
+	desc = "Inactive statusline when unfocused.",
+	callback = function()
+		vim.opt_local.statusline = "%!v:lua.require('statusline').inactive"
+	end,
+})
 
 return M
