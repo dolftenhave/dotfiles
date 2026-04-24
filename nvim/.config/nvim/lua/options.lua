@@ -16,9 +16,8 @@ vim.g.mapleader = " "
 -- Tells vim to use the system clipboard for copy pasting.
 vim.opt.clipboard = "unnamedplus"
 
-vim.opt.undofile = true -- Creates an undofile so that undo's persist between sessions.
-vim.opt.backup = false -- do not create a backup file.
+vim.opt.undofile = true     -- Creates an undofile so that undo's persist between sessions.
+vim.opt.backup = false      -- do not create a backup file.
 vim.opt.writebackup = false -- do not write to a backup file.
-vim.opt.swapfile = false -- do not create a swapfile.
-vim.opt.autoread = true -- auto-reload changes if outside nvim
-
+vim.opt.swapfile = false    -- do not create a swapfile.
+vim.opt.autoread = true     -- auto-reload changes if outside nvim

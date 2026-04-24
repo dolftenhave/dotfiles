@@ -10,7 +10,7 @@ vim.lsp.enable({
 	"pyright",
 	"sqls",
 	"qmlls",
---	"vimdoc_ls",
+	--	"vimdoc_ls",
 })
 
 vim.diagnostic.config({
@@ -27,7 +27,7 @@ vim.diagnostic.config({
 			[vim.diagnostic.severity.ERROR] = "E",
 			[vim.diagnostic.severity.WARN] = "W",
 			[vim.diagnostic.severity.INFO] = "I",
-		[vim.diagnostic.severity.HINT] = "H",
+			[vim.diagnostic.severity.HINT] = "H",
 		},
 	},
 })

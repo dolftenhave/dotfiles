@@ -1,4 +1,4 @@
--- Install with: 
+-- Install with:
 --		arch: sudo pacman -S qt6-declarative
 
 --- @type vim.lsp.Config

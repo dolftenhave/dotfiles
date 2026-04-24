@@ -1,9 +1,10 @@
 vim.pack.add({
 	-- Blink
-	{src = "https://github.com/rafamadriz/friendly-snippets"},
-	{src = "https://github.com/saghen/blink.cmp",
+	{ src = "https://github.com/rafamadriz/friendly-snippets" },
+	{
+		src = "https://github.com/saghen/blink.cmp",
 		version = vim.version.range("1.*"),
-},
+	},
 })
 -- ===================
 -- Blink.cmp
@@ -11,70 +12,70 @@ vim.pack.add({
 
 require("blink.cmp").setup({
 	enabled = function()
-			return not vim.tbl_contains({ "markdown" }, vim.bo.filetype)
-		end,
-		keymap = {
-			preset = "default",
-			["<C-u>"] = { "scroll_signature_up", "fallback" },
-			["<C-d>"] = { "scroll_signature_down", "fallback" },
-			--["<Tab>"] = { "accept" },
-		},
+		return not vim.tbl_contains({ "markdown" }, vim.bo.filetype)
+	end,
+	keymap = {
+		preset = "default",
+		["<C-u>"] = { "scroll_signature_up", "fallback" },
+		["<C-d>"] = { "scroll_signature_down", "fallback" },
+		--["<Tab>"] = { "accept" },
+	},
 
-		signature = {
-			enabled = true,
-		},
+	signature = {
+		enabled = true,
+	},
 
-		appearance = {
-			nerd_font_variant = "mono",
-		},
+	appearance = {
+		nerd_font_variant = "mono",
+	},
 
-		completion = {
-			-- ensures that the text at the start of the word is taken into account when writing completion.
-			keyword = { range = "full" },
+	completion = {
+		-- ensures that the text at the start of the word is taken into account when writing completion.
+		keyword = { range = "full" },
 
-			-- The auto show menu.
-			menu = {
-				border = "rounded",
-				draw = {
-					columns = {
-						{
-							"kind_icon",
-							"label",
-							"label_description",
-							gap = 1,
-						},
-						{
-							"kind",
-							gap = 1,
-						},
-						-- this shows the source of the suggestion. e.g. lsp or snippets this the end
-						{
-							"source_name",
-						},
+		-- The auto show menu.
+		menu = {
+			border = "rounded",
+			draw = {
+				columns = {
+					{
+						"kind_icon",
+						"label",
+						"label_description",
+						gap = 1,
 					},
-					components = {
-						label = {
-							ellipsis = true,
-						},
+					{
+						"kind",
+						gap = 1,
 					},
-
-					treesitter = { "lsp" },
+					-- this shows the source of the suggestion. e.g. lsp or snippets this the end
+					{
+						"source_name",
+					},
 				},
-				--auto_show = function()
-				--	return not in_treesitter_capture("comment")
-				--end,
-			},
+				components = {
+					label = {
+						ellipsis = true,
+					},
+				},
 
-			documentation = {
-				window = {border = "rounded"},
-				auto_show = true,
-				treesitter_highlighting = true,
+				treesitter = { "lsp" },
 			},
+			--auto_show = function()
+			--	return not in_treesitter_capture("comment")
+			--end,
 		},
 
-		sources = {
-			default = { "lsp", "path", "buffer", "snippets" },
+		documentation = {
+			window = { border = "rounded" },
+			auto_show = true,
+			treesitter_highlighting = true,
 		},
+	},
 
-		fuzzy = { implementation = "prefer_rust_with_warning" },
+	sources = {
+		default = { "lsp", "path", "buffer", "snippets" },
+	},
+
+	fuzzy = { implementation = "prefer_rust_with_warning" },
 })
