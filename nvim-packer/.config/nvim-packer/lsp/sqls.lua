@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 -- Install:
 -- arch: sudo npm i -g sql-language-server
 
