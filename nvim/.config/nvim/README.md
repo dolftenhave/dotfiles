@@ -3,8 +3,8 @@
 All plugins are located in [lua/plugins/](lua/plugins/). With the exception of lazy which is in [init.lua](init.lua).
 
 - [Instillation](#insillation)
-- [External Dependendies](#external-dependencies)
-- [Filetype/language support](#filetype\/language-support)
+- [External Dependencies](#⚡️external-dependencies)
+- [Filetype-language support](#filetype-language-support)
 - [Plugins](#plugins)
 - [TODO](#todo)
 
@@ -28,7 +28,7 @@ All plugins are located in [lua/plugins/](lua/plugins/). With the exception of l
 
 - A nerd font
 
-## Filetype/language support
+## Filetype-language support
 
 
 | Lang       | TS  | LSP | Name | Compiler | Name |
