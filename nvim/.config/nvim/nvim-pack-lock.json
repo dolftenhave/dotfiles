@@ -17,6 +17,10 @@
       "rev": "d28a3f70721c79e3c5f6693057ae929f3d9c0a03",
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
     },
+    "markview.nvim": {
+      "rev": "e27dee8b2a61f89ac3a06deae0264ad1d3f7b62c",
+      "src": "https://github.com/OXY2DEV/markview.nvim"
+    },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
