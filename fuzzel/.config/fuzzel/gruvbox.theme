@@ -1,0 +1,13 @@
+[colors]
+background=282828ff
+text=ebdbb2ff
+message=ebdbb2ff
+prompt=928374ff
+placeholder=928374ff
+input=ebdbb2ff
+match=fe8019ff
+selection=3c3836ff
+selection-text=ebdbb2ff
+selection-match=fe8019ff
+counter=504945ff
+border=504945ff

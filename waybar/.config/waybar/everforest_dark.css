@@ -1,0 +1,41 @@
+@define-color red #493B40;
+@define-color bright_red #E67E80;
+@define-color green #3C4841;
+@define-color bright_green #A7C080;
+@define-color yellow #49443C;
+@define-color bright_yellow #DBBC7F;
+@define-color blue #384B55;
+@define-color bright_blue #7FBBB3;
+@define-color purple #463F48;
+@define-color bright_purple #D699B6;
+@define-color aqua #4C3743;
+@define-color bright_aqua #83C092;
+@define-color gray #4F5B48;
+@define-color bright_gray #9DA9A0;
+@define-color orange #49403E;
+@define-color bright_orange #E69875;
+
+@define-color bg_h #1E2326;
+@define-color bg0 #272E33;
+@define-color bg1 #2e383c;
+@define-color bg2 #374145;
+@define-color bg3 #414b50;
+@define-color bg4 #495156;
+@define-color background @bg0;
+@define-color fg0 #7A8479;
+@define-color fg1 #859289;
+@define-color fg2 #9DA9A0;
+@define-color fg3 #D3c6aa;
+@define-color foreground @fg3;
+@define-color warning @bright_red;
+
+/*
+ * My color aliases.
+ */
+
+@define-color bar_bg @bg1;
+@define-color bar_fg @foreground;
+@define-color module_bg @bg1;
+@define-color module-fg @foreground;
+@define-color module-bg-hover @bg3;
+@define-color module-fg-hover @foreground;

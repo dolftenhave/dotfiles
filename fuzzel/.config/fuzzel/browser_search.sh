@@ -10,7 +10,7 @@
 BROWSER="firefox"
 ENGINE="https://google.com/search?q="
 
-QUERY=$(fuzzel -d --lines=0 --placeholder 'internet search...')
+QUERY=$(fuzzel -d --lines=0)
 [ -z "$QUERY" ] && exit 0
 
 $BROWSER "$ENGINE$QUERY"

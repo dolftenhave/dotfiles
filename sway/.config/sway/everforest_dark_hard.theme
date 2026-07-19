@@ -1,0 +1,45 @@
+#============================#
+# Colors					 #
+#----------------------------#
+# Theme: Everforst Dark Hard #
+#============================#
+set $black			#272E33
+set $bright_black	#859289
+
+set $red			#493B40
+set $bright_red		#D3C6AA
+
+set $green			#3C4841
+set $bright_green	#A7C080
+
+set $yellow			#45443C
+set $bright_yellow	#DBBC7F
+
+set $blue			#384B55
+set $bright_blue	#7FBBB3
+
+set $magenta		#463F48
+set $bright_magenta #D699B6
+
+set $cyan			#4C3743
+set $bright_cyan	#83C092
+
+set $white			#735B48
+set $bright_white	#D3C6AA
+
+set $orange			#d65d0e
+set $bright_orange	#E69875
+
+set $bg				#272E33
+set $bg0_h			#1E2326
+set $bg0			#272E33
+set $bg1			#2E383C
+set $bg2			#374145
+set $bg3			#414B50
+set $bg4			#495156
+
+set $fg				#D3C6AA
+set $fg0			#D3C6AA
+set $fg1			#7A8478
+set $fg2			#859289
+set $fg3			#9DA9A0

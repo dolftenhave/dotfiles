@@ -21,3 +21,5 @@ vim.opt.backup = false      -- do not create a backup file.
 vim.opt.writebackup = false -- do not write to a backup file.
 vim.opt.swapfile = false    -- do not create a swapfile.
 vim.opt.autoread = true     -- auto-reload changes if outside nvim
+
+vim.opt.clipboard = "unnamedplus"
